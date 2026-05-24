@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionRule from '../components/SectionRule.astro';
+import Button from '../components/Button.astro';
+import GrainOverlay from '../components/GrainOverlay.astro';
+---
+<BaseLayout
+  title="About — Johny Francis"
+  description="This is not a résumé. It's how I got here. Senior Manager, Production Technology & GenAI at Netflix APAC. From film sets to the frontier of generative AI — always asking the same question."
+>
+  <section class="about-hero" aria-label="Page header">
+    <GrainOverlay />
+    <div class="about-hero-inner">
+      <p class="about-eyebrow">About</p>
+      <h1 class="about-title">This is not a résumé.<br />It's how I got here.</h1>
+      <p class="about-tagline">The CV exists. This is the part it couldn't fit.</p>
+    </div>
+  </section>
+
+  <article class="about-body-section" aria-label="About Johny Francis">
+    <div class="reading-col">
+
+      <div class="about-section">
+        <SectionRule number="01" label="I wasn't supposed to be here" />
+        <div class="prose-johny reveal">
+          <p>Not in a dramatic way. But growing up, I was never the kid who topped the class. I was compared — constantly — to other students who seemed to find it all effortless. I didn't. School told me, in a hundred quiet ways, that I wasn't quite enough.</p>
+          <p>So I stopped competing on those terms.</p>
+          <p>I started looking for something I could be genuinely good at. Something that felt true. Something where the measure of success wasn't a grade on a paper but a feeling in the room — the moment someone leaned in, or laughed, or said "I didn't know that was possible."</p>
+          <p>I found it in stories. In images. In the space where a great idea meets the right technology to bring it to life.</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <SectionRule number="02" label="I was never just one thing" />
+        <div class="prose-johny reveal">
+          <p>I started my career in IT — managing Microsoft System Center infrastructure for organisations that depended on it staying up. I was good at it, and I genuinely loved it. The logic of systems. The discipline of thinking in processes and dependencies.</p>
+          <p>But something else was running in parallel.</p>
+          <p>I had started taking photographs — quietly, without a plan. Then commissions started arriving before I had fully registered what was happening. Harley-Davidson's India launch. Myntra campaigns. Femina Miss India. Other people had decided I had an eye before I had claimed the identity myself.</p>
+          <p>I followed it properly. Applied to AFTRS in Sydney, graduated in cinematography, and walked onto my first film set carrying both things at once — the camera and the systems thinking.</p>
+          <p>Here is what I discovered on set: creative people are extraordinary at their craft and frequently underserved by the technology around them. The tools were built by people who understood technology but not creativity. The decisions were made by people who had never stood inside the work.</p>
+          <p>I had stood inside both.</p>
+          <p>That became my entry point. RED Digital Cinema — training cinematographers and directors across India, Singapore, Australia, and New Zealand. Disguise Technologies — helping studios build entire worlds on LED stages. Amazon Studios — navigating the intersection of creative ambition and industrial scale across feature post.</p>
+          <p>Each move, the same question underneath everything: how do we use technology to help people with genuine creative vision do more of what only they can do?</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <SectionRule number="03" label="The biggest canvas I've found so far" />
+        <div class="prose-johny reveal">
+          <p>At Netflix APAC, I lead a cross-functional team of imaging technologists, sound technologists, and generative AI specialists — building the systems and workflows that keep some of the world's most ambitious content moving across one of the most complex content markets in the world.</p>
+          <p>But I still build things myself. An AI-powered script breakdown tool for cinematographers — analysing scripts to generate lighting breakdowns and production dependencies, compressing weeks of pre-production work into hours. A lens framing chart tool for cinematographers. Grading and psychometric assessment tools for NGO-affiliated schools — pro bono, because some problems are worth solving regardless of what they pay.</p>
+          <p>I work in Claude Code. I build agentic workflows and automation tools that enhance the quality of creative work and save time — always with a human in the loop, because that is non-negotiable in any creative process.</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <SectionRule number="04" label="Who I am when I'm not working" />
+        <div class="prose-johny reveal">
+          <p>I think a lot. Then I build something. Sometimes it's a system, sometimes a story, sometimes just a thought I needed to get out of my head and onto a page.</p>
+          <p>Music is the only system I know that bypasses logic entirely and goes straight to feeling. It's also my reset button — the one place where I don't have to solve anything.</p>
+          <p>I care deeply about kindness. Not as a soft skill. As a practice. People are carrying more than you can see. The least you can do is make their day slightly easier.</p>
+          <p>I teach at film institutes — FTI, SRFTI, and Whistling Woods — because I remember what it felt like to be told I wasn't enough, and I'd rather be the person who tells the next generation what they're actually capable of.</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <SectionRule number="05" label="Why I'm here" />
+        <div class="prose-johny reveal">
+          <p>I'm here for the problems that sit between creativity and technology — the ones that need someone who has stood inside both. Work that matters. Teams that move fast and care deeply. Conversations where the strategy and the hands-on build belong on the same whiteboard.</p>
+          <p>If that sounds like what you're building, I'd want to hear about it.</p>
+        </div>
+      </div>
+
+      <div class="about-cta reveal">
+        <Button href="/work/">Read my work →</Button>
+        <Button href="/contact/" variant="ghost">Get in touch →</Button>
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+.about-hero {
+  min-height: 38vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 9rem 3rem 3.5rem;
+  position: relative;
+  background: var(--color-navy);
+  overflow: hidden;
+}
+.about-hero-inner { position: relative; max-width: 980px; width: 100%; }
+.about-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-teal-light);
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.about-title {
+  font-family: 'Caveat', cursive;
+  font-style: normal;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--color-sand);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.about-tagline {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-sand);
+  opacity: 0.4;
+  line-height: 1.6;
+}
+
+.about-body-section {
+  padding: 3.5rem 3rem 6rem;
+  background: var(--color-navy-deep);
+}
+.reading-col {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Spacing system — scoped to About page only */
+/* Use padding (not margin) so gaps never collapse */
+.about-section + .about-section {
+  padding-top: 64px;
+}
+
+/* 12px between section heading and first paragraph */
+.about-section :global(.section-rule) {
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+/* 20px between paragraphs */
+.prose-johny p {
+  margin-bottom: 20px;
+}
+.prose-johny p:last-child {
+  margin-bottom: 0;
+}
+.prose-johny em {
+  color: var(--color-coral);
+  font-style: italic;
+  opacity: 1;
+}
+
+.about-cta {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 64px;
+}
+
+@media (max-width: 768px) {
+  .about-hero { padding: 7rem 1.5rem 3rem; min-height: 30vh; }
+  .about-body-section { padding: 3rem 1.5rem 4rem; }
+}
+</style>

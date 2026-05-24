@@ -1,0 +1,23 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+<blockquote class:list={['pull-quote', className]}>
+  <slot />
+</blockquote>
+
+<style>
+.pull-quote {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--color-sand);
+  opacity: 0.55;
+  line-height: 1.45;
+  border-left: 1.5px solid var(--color-teal);
+  padding-left: 1.25rem;
+  margin: 2rem 0;
+}
+</style>

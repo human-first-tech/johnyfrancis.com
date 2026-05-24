@@ -1,0 +1,273 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GrainOverlay from '../components/GrainOverlay.astro';
+
+type Film = {
+  title: string;
+  year: string;
+  role?: string;
+  poster: string;
+  link?: string;
+};
+
+const films: Film[] = [
+  { title: 'Maa Behen', year: '2026', poster: '/films/maa-behen-tt33538438.jpg' },
+  { title: 'Gandhari', year: '2026', poster: '/films/gandhari-tt33354945.jpg' },
+  { title: 'Super Subbu', year: 'Post-production', poster: '/films/super-subbu-tt31989291.jpg' },
+  { title: 'Operation Safed Sagar', year: '2026', poster: '/films/operation-safed-sagar-tt36643714.jpg' },
+  { title: 'Glory', year: '2026', poster: '/films/glory-tt35668375.jpg' },
+  { title: 'Toaster', year: '2026', poster: '/films/toaster-tt34498610.jpg' },
+  { title: 'Made in Korea', year: '2026', poster: '/films/made-in-korea-tt38674977.jpg' },
+  { title: 'Kohrra', year: '2026', poster: '/films/kohrra-tt27853283.jpg' },
+  { title: 'Dabba Cartel', year: '2025', poster: '/films/dabba-cartel-tt15340954.jpg' },
+  { title: 'Nadaaniyan', year: '2025', poster: '/films/nadaaniyan-tt30422937.jpg' },
+  { title: 'Black Warrant', year: '2025', poster: '/films/black-warrant-tt35064818.jpg' },
+  { title: 'The Great Indian Kapil Show', year: '2024–2025', poster: '/films/the-great-indian-kapil-show-tt30003786.jpg' },
+  { title: 'Heeramandi: The Diamond Bazaar', year: '2024', poster: '/films/heeramandi-the-diamond-bazaar-tt15204292.jpg' },
+  { title: 'Five Blind Dates', year: '2024', poster: '/films/five-blind-dates-tt21236048.jpg' },
+  { title: 'Maamla Legal Hai', year: '2024', poster: '/films/maamla-legal-hai-tt31183656.jpg' },
+  { title: 'Kill', year: '2023', poster: '/films/kill-tt28259207.jpg' },
+  { title: 'Chor Nikal Ke Bhaga', year: '2023', poster: '/films/chor-nikal-ke-bhaga-tt22297828.jpg' },
+  { title: 'Hungry', year: '2023', role: 'Cinematographer', poster: '/films/hungry-tt32982092.jpg' },
+  { title: 'Qala', year: '2022', poster: '/films/qala-tt14428598.jpg' },
+  { title: 'Cobalt Blue', year: '2022', poster: '/films/cobalt-blue-tt15314640.jpg' },
+  { title: 'Decoupled', year: '2021', poster: '/films/decoupled-tt14167338.jpg' },
+  { title: 'Meenakshi Sundareshwar', year: '2021', poster: '/films/meenakshi-sundareshwar-tt13529034.jpg' },
+  { title: 'Navarasa', year: '2021', poster: '/films/navarasa-tt13357946.jpg' },
+  { title: 'Skater Girl', year: '2021', poster: '/films/skater-girl-tt6964940.jpg' },
+  { title: 'Searching for Sheela', year: '2021', poster: '/films/searching-for-sheela-tt14167424.jpg' },
+  { title: 'Ajeeb Daastaans', year: '2021', poster: '/films/ajeeb-daastaans-tt14091818.jpg' },
+  { title: 'Pagglait', year: '2021', poster: '/films/pagglait-tt11142762.jpg' },
+  { title: 'Bombay Begums', year: '2021', poster: '/films/bombay-begums-tt10238792.jpg' },
+  { title: 'The White Tiger', year: '2021', poster: '/films/the-white-tiger-tt6571548.jpg' },
+  { title: 'Tribhanga', year: '2021', poster: '/films/tribhanga-tt11102314.jpg' },
+  { title: 'Mismatched', year: '2020–2024', poster: '/films/mismatched-tt12719250.jpg' },
+  { title: 'AK vs AK', year: '2020', poster: '/films/ak-vs-ak-tt11651796.jpg' },
+  { title: 'Paava Kadhaigal', year: '2020', poster: '/films/paava-kadhaigal-tt13206988.jpg' },
+  { title: 'Rooting for Roona', year: '2020', poster: '/films/rooting-for-roona-tt8995696.jpg' },
+  { title: 'Serious Men', year: '2020', poster: '/films/serious-men-tt10230414.jpg' },
+  { title: 'Bad Boy Billionaires: India', year: '2020', poster: '/films/bad-boy-billionaires-india-tt12923630.jpg' },
+  { title: 'Masaba Masaba', year: '2020', poster: '/films/masaba-masaba-tt10655506.jpg' },
+  { title: "Class of '83", year: '2020', poster: '/films/class-of-83-tt10230422.jpg' },
+  { title: 'Raat Akeli Hai', year: '2020', poster: '/films/raat-akeli-hai-tt12567088.jpg' },
+  { title: 'Gunjan Saxena: The Kargil Girl', year: '2020', poster: '/films/gunjan-saxena-the-kargil-girl-tt10350626.jpg' },
+  { title: 'Bulbbul', year: '2020', poster: '/films/bulbbul-tt12393526.jpg' },
+  { title: 'Choked', year: '2020', poster: '/films/choked-tt11651780.jpg' },
+  { title: 'Betaal', year: '2020', poster: '/films/betaal-tt10651790.jpg' },
+  { title: 'Mrs. Serial Killer', year: '2020', poster: '/films/mrs-serial-killer-tt10230426.jpg' },
+  { title: 'Guilty', year: '2020', poster: '/films/guilty-tt10062614.jpg' },
+  { title: 'Jamtara: Sabka Number Ayega', year: '2020', poster: '/films/jamtara-sabka-number-ayega-tt11150912.jpg' },
+  { title: 'Kota Factory', year: '2019–2021', poster: '/films/kota-factory-tt9432978.jpg' },
+  { title: 'Upstarts', year: '2019', poster: '/films/upstarts-tt11066130.jpg' },
+  { title: 'Dolly Kitty and Those Twinkling Stars', year: '2019', poster: '/films/dolly-kitty-and-those-twinkling-stars-tt9176296.jpg' },
+  { title: 'Bard of Blood', year: '2019', poster: '/films/bard-of-blood-tt8069036.jpg' },
+  { title: 'Sacred Games', year: '2019', poster: '/films/sacred-games-tt6077448.jpg' },
+  { title: 'Typewriter', year: '2019', poster: '/films/typewriter-tt9310372.jpg' },
+  { title: 'Leila', year: '2019', poster: '/films/leila-tt9337588.jpg' },
+  { title: 'Delhi Crime', year: '2019', poster: '/films/delhi-crime-tt9398466.jpg' },
+  { title: 'Little Things', year: '2018–2019', poster: '/films/little-things-tt6522580.jpg' },
+  { title: 'Selection Day', year: '2018–2019', poster: '/films/selection-day-tt8004628.jpg' },
+  { title: 'Mizta Decoder feat. Byjo: Find the Way', year: '2017', role: 'Cinematographer', poster: '/films/mizta-decoder-feat-byjo-find-the-way-tt7632878.jpg' },
+  { title: 'Black Dog', year: '2016', role: 'Cinematographer', poster: '/films/black-dog-tt5495424.jpg' },
+  { title: 'Love Socks', year: '2015', poster: '/films/love-socks-tt3701512.jpg' },
+  { title: 'The Story of Us', year: '2015', role: 'Cinematographer', poster: '/films/the-story-of-us-tt5091764.jpg' },
+  { title: 'Magic in You', year: '2015', role: 'Director · Cinematographer', poster: '' },
+  { title: 'Mirror Friend', year: '2014', role: 'Cinematographer', poster: '' },
+];
+---
+<BaseLayout
+  title="Films — Johny Francis"
+  description="A selection of films and shows I've contributed to across imaging, post-production, and production technology."
+>
+  <section class="films-hero" aria-label="Page header">
+    <GrainOverlay />
+    <div class="films-hero-inner">
+      <p class="films-eyebrow">Films</p>
+      <h1 class="films-title">The work that made it to screen.</h1>
+      <p class="films-tagline">A selection of films and shows I had the privilege of working on.</p>
+    </div>
+  </section>
+
+  <section class="films-grid-section" aria-label="Filmography">
+    <div class="films-col">
+      {films.length === 0 ? (
+        <div class="films-empty">
+          <p>Posters coming soon.</p>
+        </div>
+      ) : (
+        <ul class="films-grid">
+          {films.map(f => (
+            <li class="film-tile reveal">
+              {f.link ? (
+                <a href={f.link} target="_blank" rel="noopener noreferrer" aria-label={`${f.title} (${f.year})`}>
+                  <div class="film-poster">
+                    <img src={f.poster} alt={`${f.title} poster`} loading="lazy" />
+                  </div>
+                  <div class="film-meta">
+                    <h2 class="film-title">{f.title}</h2>
+                    <div class="film-sub">
+                      <span class="film-year">{f.year}</span>
+                      {f.role && <span class="film-role"> · {f.role}</span>}
+                    </div>
+                  </div>
+                </a>
+              ) : (
+                <>
+                  <div class={`film-poster ${!f.poster ? 'film-poster--empty' : ''}`}>
+                    {f.poster ? (
+                      <img src={f.poster} alt={`${f.title} poster`} loading="lazy" />
+                    ) : (
+                      <span class="film-poster-fallback">{f.title}</span>
+                    )}
+                  </div>
+                  <div class="film-meta">
+                    <h2 class="film-title">{f.title}</h2>
+                    <div class="film-sub">
+                      <span class="film-year">{f.year}</span>
+                      {f.role && <span class="film-role"> · {f.role}</span>}
+                    </div>
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.films-hero {
+  min-height: 38vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 9rem 3rem 4rem;
+  position: relative;
+  background: var(--color-navy);
+  overflow: hidden;
+}
+.films-hero-inner { position: relative; max-width: 980px; width: 100%; }
+.films-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-teal-light);
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.films-title {
+  font-family: 'Caveat', cursive;
+  font-style: normal;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--color-sand);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.films-tagline {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: var(--color-sand);
+  opacity: 0.55;
+  max-width: 580px;
+}
+
+.films-grid-section {
+  background: var(--color-navy-deep);
+  padding: 5rem 0 7rem;
+}
+.films-col { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
+
+.films-empty {
+  text-align: center;
+  padding: 4rem 0;
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  color: var(--color-sand);
+  opacity: 0.4;
+  letter-spacing: 0.05em;
+}
+
+.films-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+.film-tile { position: relative; }
+.film-tile a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.film-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(245,237,216,0.04);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.film-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.film-tile:hover .film-poster {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.55);
+}
+.film-tile:hover .film-poster img { transform: scale(1.03); }
+
+.film-poster--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(160deg, rgba(74,124,142,0.18), rgba(232,168,124,0.08));
+  border: 0.5px solid rgba(245,237,216,0.08);
+}
+.film-poster-fallback {
+  font-family: 'DM Serif Display', serif;
+  font-size: 0.95rem;
+  color: var(--color-sand);
+  opacity: 0.7;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.film-meta { padding: 0.9rem 0.1rem 0; }
+.film-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem;
+  color: var(--color-sand);
+  line-height: 1.25;
+  margin: 0 0 0.25rem;
+}
+.film-sub {
+  font-family: 'Lora', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal-light);
+  opacity: 0.6;
+}
+.film-role { opacity: 0.85; }
+
+@media (max-width: 768px) {
+  .films-hero { padding: 7rem 1.5rem 3rem; min-height: 28vh; }
+  .films-col { padding: 0 1.5rem; }
+  .films-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 1.5rem 1rem;
+  }
+}
+</style>

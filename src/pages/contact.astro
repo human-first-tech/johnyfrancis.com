@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GrainOverlay from '../components/GrainOverlay.astro';
+---
+<BaseLayout
+  title="Contact — Johny Francis"
+  description="Let's talk. Johny Francis is open to conversations at the intersection of creativity, technology, and genuine human impact."
+>
+  <section class="contact-section" aria-label="Contact">
+    <GrainOverlay />
+    <div class="contact-bg" aria-hidden="true"></div>
+    <div class="contact-inner">
+      <p class="contact-eyebrow">Contact</p>
+      <h1 class="contact-heading">Let's talk.</h1>
+      <div class="contact-body">
+        <p>I'm always open to conversations that go somewhere unexpected.</p>
+        <p>If you're building something at the intersection of creativity and technology — or you have a problem that sits between the creative world and the technical one — I'd genuinely love to hear about it.</p>
+      </div>
+      <div class="contact-links" role="list">
+        <a href="mailto:hello@johnyfrancis.com" class="contact-link" role="listitem">
+          <span class="contact-link-icon" aria-hidden="true">📩</span>
+          hello@johnyfrancis.com
+        </a>
+        <a href="https://linkedin.com/in/johnyfrancis" class="contact-link" role="listitem" target="_blank" rel="noopener noreferrer">
+          <span class="contact-link-icon" aria-hidden="true">🔗</span>
+          linkedin.com/in/johnyfrancis
+        </a>
+      </div>
+      <p class="contact-location">Mumbai · Working globally</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.contact-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9rem 3rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy);
+  text-align: center;
+}
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(74,124,142,0.08) 0%, transparent 70%);
+}
+.contact-inner { position: relative; max-width: 560px; }
+.contact-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-teal-light);
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.contact-heading {
+  font-family: 'Caveat', cursive;
+  font-style: normal;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--color-sand);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+.contact-body {
+  font-size: 1.05rem;
+  color: var(--color-sand);
+  opacity: 0.45;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+.contact-body p { margin-bottom: 1rem; }
+.contact-body p:last-child { margin-bottom: 0; }
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+.contact-link {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--color-sand);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: color 0.2s, opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.contact-link:hover { color: var(--color-coral); opacity: 1; }
+.contact-link-icon { font-style: normal; }
+.contact-location {
+  font-family: 'Lora', serif;
+  font-size: 0.67rem;
+  letter-spacing: 0.12em;
+  color: var(--color-sand);
+  opacity: 0.22;
+}
+
+@media (max-width: 768px) {
+  .contact-section { padding: 7rem 1.5rem 4rem; }
+}
+</style>

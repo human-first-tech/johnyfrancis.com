@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import GrainOverlay from '../../components/GrainOverlay.astro';
+---
+<BaseLayout
+  title="Thinking — Johny Francis"
+  description="Honest thinking about creativity, technology, and the people caught between them. Five essays by Johny Francis."
+>
+  <section class="thinking-hero" aria-label="Page header">
+    <GrainOverlay />
+    <div class="thinking-hero-inner">
+      <p class="thinking-eyebrow">Thinking</p>
+      <h1 class="thinking-title">Honest thinking about creativity, technology, and people.</h1>
+    </div>
+  </section>
+
+  <section class="thinking-body">
+    <div class="thinking-col">
+      <nav class="article-list reveal" aria-label="Articles">
+        <ArticleCard
+          number="01"
+          title="The Tool That Fits Your Mind"
+          dek="On design thinking, the gap AI just closed, and why every creative person will soon build exactly what they need."
+          readTime="8 min read"
+          href="/thinking/the-tool-that-fits-your-mind/"
+        />
+        <ArticleCard
+          number="02"
+          title="They Told Me to Pick One Thing. I'm Glad I Didn't."
+          dek="On what scattered interests actually compound into — and why the best ideas rarely come from inside the room."
+          readTime="9 min read"
+          href="/thinking/they-told-me-to-pick-one-thing/"
+        />
+        <ArticleCard
+          number="03"
+          title="The Problem Was Never the Mind. It Was the Format."
+          dek="On information overload, scattered attention, and what AI is quietly changing for millions of people."
+          readTime="8 min read"
+          href="/thinking/the-problem-was-never-the-mind/"
+        />
+        <ArticleCard
+          number="04"
+          title="Where the Ocean Ends and the Mountain Begins"
+          dek="On two landscapes, two kinds of thinking, and the city where both come home to work."
+          readTime="7 min read"
+          href="/thinking/where-the-ocean-ends-and-the-mountain-begins/"
+        />
+        <ArticleCard
+          number="05"
+          title="You Were Never Behind."
+          dek="On difficult childhoods, overcompensation, and the quiet work of learning to stop."
+          readTime="8 min read"
+          href="/thinking/you-were-never-behind/"
+        />
+      </nav>
+
+      <div class="thinking-note reveal">
+        <div class="note-label">A note on how these articles were written</div>
+        <p>I have always had thoughts worth sharing. What I lacked was the confidence that I could write them well.</p>
+        <p>These articles were written with the help of AI — specifically as a thinking partner that helped me shape and articulate ideas that are entirely my own. Every memory, every observation, every belief in these pages came from me. The AI helped me find the words.</p>
+        <p>I think that's worth being honest about. Partly because transparency matters to me. And partly because using AI this way — not to replace thinking, but to express it more clearly — is exactly what I believe these tools are for.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.thinking-hero {
+  min-height: 38vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 9rem 3rem 4rem;
+  position: relative;
+  background: var(--color-navy);
+  overflow: hidden;
+}
+.thinking-hero-inner { position: relative; max-width: 980px; width: 100%; }
+.thinking-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-teal-light);
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.thinking-title {
+  font-family: 'Caveat', cursive;
+  font-style: normal;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--color-sand);
+  line-height: 1.25;
+}
+
+.thinking-body {
+  padding: 5rem 3rem 6rem;
+  background: var(--color-navy-deep);
+}
+.thinking-col { max-width: 960px; margin: 0 auto; }
+
+.thinking-col :global(.article-list) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3rem;
+  row-gap: 3rem;
+}
+.thinking-col :global(.article-list .article-card) {
+  border-top: none !important;
+  border-bottom: none !important;
+  padding: 0;
+}
+.thinking-col :global(.article-list .article-card:nth-child(odd)) {
+  grid-column: 1;
+  text-align: left;
+}
+.thinking-col :global(.article-list .article-card:nth-child(even)) {
+  grid-column: 2;
+  text-align: left;
+  padding-left: 1rem;
+}
+.thinking-col :global(.article-list .article-card:hover) { padding-left: 0; }
+.thinking-col :global(.article-list .article-card:nth-child(even):hover) { padding-left: 1.5rem; }
+
+.thinking-note { max-width: 700px; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 768px) {
+  .thinking-col :global(.article-list) {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+  }
+  .thinking-col :global(.article-list .article-card:nth-child(even)) {
+    grid-column: 1;
+    padding-left: 0;
+  }
+}
+
+.thinking-note {
+  background: rgba(74,124,142,0.06);
+  border: 0.5px solid rgba(74,124,142,0.2);
+  border-radius: 10px;
+  padding: 1.75rem 2rem;
+  margin-top: 3.5rem;
+  font-size: 0.93rem;
+  color: var(--color-sand);
+  opacity: 0.65;
+  line-height: 1.8;
+}
+.thinking-note p { margin-bottom: 0.85rem; }
+.thinking-note p:last-child { margin-bottom: 0; }
+.note-label {
+  font-family: 'Lora', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-teal-light);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .thinking-hero { padding: 7rem 1.5rem 3rem; min-height: 28vh; }
+  .thinking-body { padding: 3.5rem 1.5rem 4rem; }
+  .thinking-note { padding: 1.25rem 1.5rem; }
+}
+</style>

@@ -1,0 +1,85 @@
+---
+interface Props {
+  number: string;
+  company: string;
+  role: string;
+  meta: string;
+  href?: string;
+}
+const { number, company, role, meta, href } = Astro.props;
+---
+<article class="work-card">
+  <span class="work-card-num">{number}</span>
+  <h3 class="work-card-company">{company}</h3>
+  <div class="work-card-role">{role}</div>
+  <div class="work-card-meta">{meta}</div>
+  <div class="work-card-body">
+    <slot />
+  </div>
+  {href && <a href={href} class="work-card-arrow" aria-label={`Read more about ${company}`}>↗</a>}
+</article>
+
+<style>
+.work-card {
+  background: var(--color-navy-deep);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: background 0.25s;
+  border-bottom: 0.5px solid rgba(245, 237, 216, 0.06);
+}
+.work-card-num {
+  font-family: 'Lora', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--color-coral);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 0.9rem;
+}
+.work-card-company {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: var(--color-sand);
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+.work-card-role {
+  font-family: 'Lora', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--color-sand);
+  opacity: 0.55;
+  margin-bottom: 0.2rem;
+}
+.work-card-meta {
+  font-family: 'Lora', serif;
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-teal-light);
+  opacity: 0.55;
+  margin-bottom: 1.1rem;
+}
+.work-card-body {
+  font-size: 0.97rem;
+  color: var(--color-sand);
+  opacity: 0.55;
+  line-height: 1.75;
+}
+.work-card-body :global(p) {
+  margin-bottom: 0.9rem;
+}
+.work-card-arrow {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--color-coral);
+  opacity: 0.35;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.work-card:hover .work-card-arrow {
+  opacity: 0.75;
+  transform: translate(2px, -2px);
+}
+</style>

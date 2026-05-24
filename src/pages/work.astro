@@ -1,0 +1,439 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const career = [
+  {
+    n: '01',
+    company: 'Netflix APAC',
+    role: 'Senior Manager, Production Technology & Generative AI',
+    period: '2023–Present',
+    year: '2023',
+    location: 'Mumbai, India',
+    body: [
+      "Netflix gave me the biggest canvas I'd ever worked on — and I chose to come back to it.",
+      "Across one of the most diverse and complex content markets in the world, I lead the production technology team that keeps great stories moving — from the first day of production to the final pixel of delivery. Then generative AI arrived, and everything got more interesting.",
+      "I lead a cross-functional team of imaging technologists, sound technologists, and generative AI specialists — and I consider it a genuine privilege. The depth of expertise and the quiet dedication this team brings to the work every single day is something I don't take for granted.",
+      "The work I'm most proud of isn't the scale. It's the moments where a filmmaker said \"I didn't know that was possible\" — and then couldn't imagine working without it.",
+    ],
+  },
+  {
+    n: '02',
+    company: 'Prime Video & Amazon Studios',
+    role: 'Senior Post Production Executive, Movies',
+    period: '2022–2023',
+    year: '2022',
+    location: 'Australia',
+    body: [
+      "Amazon taught me what it means to operate at the intersection of creative ambition and industrial scale.",
+      "I worked across feature film post-production — managing the technology and workflows that take a film from camera to screen. Every decision had to serve two masters simultaneously: the creative vision of the filmmaker and the operational reality of a global streaming platform.",
+      "What stayed with me beyond the work itself was Amazon's leadership philosophy. Principles built for a corporation — but ones that, when you sit with them, turn out to be life skills. Customer obsession. Bias for action. Ownership. They sound like boardroom language until you realise they're just a disciplined way of being in the world.",
+      "That tension — between art and infrastructure, between principle and pragmatism — is where I do my best work.",
+    ],
+  },
+  {
+    n: '03',
+    company: 'Disguise Technologies',
+    role: 'Principal Virtual Production Specialist',
+    period: '2021–2022',
+    year: '2021',
+    location: 'Australia',
+    body: [
+      "Virtual production was the most exciting frontier in filmmaking — and Disguise was at the centre of it.",
+      "I worked with studios and productions to implement LED volume and real-time rendering workflows — technology that lets filmmakers build entire worlds on a stage. What I loved most wasn't the technology itself. It was watching directors realise they could do things they'd only imagined.",
+      "That feeling — of handing someone a tool that expands what they thought was possible — never gets old.",
+    ],
+  },
+  {
+    n: '04',
+    company: 'Netflix India',
+    role: 'Production Technologist',
+    period: '2018–2021',
+    year: '2018',
+    location: 'Mumbai, India',
+    body: [
+      "Netflix India was building something that didn't exist yet — a local production capability inside a global streaming company. I came in as a production technologist when most of it was still being figured out.",
+      "The work was hands-on across imaging and post — sitting with cinematographers, DITs, and colorists to translate global delivery standards into something that felt native to Indian productions. Long days. Unfamiliar problems. Teams learning out loud.",
+      "It was the apprenticeship I didn't know I needed. One that taught me how new craft actually gets built: slowly, in service of creatives, one decision at a time.",
+    ],
+  },
+  {
+    n: '05',
+    company: 'RED Digital Cinema',
+    role: 'Product Specialist, APAC',
+    period: '2015–2018',
+    year: '2015',
+    location: 'India',
+    body: [
+      "RED put a professional cinema camera in the hands of independent filmmakers — and changed the industry forever.",
+      "It was a privilege to serve as the technical consultant for Asia Pacific — working alongside cinematographers and directors to help them get the most out of this extraordinary machine. Across India, Singapore, Australia, and New Zealand, the work was less about the camera and more about what it could unlock for each filmmaker's storytelling.",
+      "This is where I learned that the best technology education is never about the tool. It's always about the vision the tool serves.",
+    ],
+  },
+  {
+    n: '06',
+    company: 'The Foundation Years',
+    role: 'Hewlett Packard · ICICI OneSource · Unisys · Wesfarmers · Reserve Bank of Australia',
+    period: '2004–2013',
+    year: '2004',
+    location: 'Bangalore & Sydney',
+    body: [
+      "Before the creative industry, I spent nearly a decade in enterprise technology — system engineering, Microsoft infrastructure, cloud technologies, technical support.",
+      "It wasn't glamorous. But it gave me something that no film school or creative apprenticeship could: the discipline of systems thinking. How to make complex things work reliably, under pressure, for people who depend on them without ever noticing.",
+      "That foundation never left. It just found better problems to solve.",
+    ],
+  },
+];
+---
+<BaseLayout
+  title="Work — Johny Francis"
+  description="A career across film sets, streaming platforms, and the frontier of generative AI. Netflix, Amazon, Disguise, RED, and more."
+>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+  />
+
+  <div class="work-page">
+    <section class="hero">
+      <div class="label">Work — The Spine</div>
+      <h1 class="hero-title">A career is not a list of jobs.<br/>It's a series of problems you chose to solve.</h1>
+      <p class="hero-sub">Click any company to open it.</p>
+    </section>
+
+    <section>
+      <div class="spine-wrap">
+        <div class="spine" id="spine">
+          <div class="spine-progress" id="progress"></div>
+
+          {career.map((c, i) => (
+            <div class={`spine-node ${i % 2 === 0 ? 'left' : 'right'}`}>
+              <div class="spine-year">{c.year}</div>
+              <div class="spine-dot"></div>
+              <div class="spine-card">
+                <div class="spine-num">{c.n}</div>
+                <div class="spine-company">{c.company}</div>
+                <div class="spine-role">{c.role}</div>
+                <div class="spine-meta">{c.period} · {c.location}</div>
+                <div class="spine-toggle">CLICK TO OPEN  +</div>
+              </div>
+              <div class="spine-detail">
+                {c.body.map(p => <p>{p}</p>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="thread">
+      <div class="thread-box">
+        <div class="thread-label">The Thread</div>
+        <p>Every company on this list is a different chapter. Different industry, different scale, different problem.</p>
+        <p>But the same question runs through all of it:</p>
+        <div class="thread-quote">How do we use technology to help people with genuine creative vision do more of what only they can do?</div>
+        <p>That question is still what gets me out of bed in the morning.</p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .work-page {
+    --wp-bg: #0a1422;
+    --wp-panel: #131e30;
+    --wp-cream: #ece8df;
+    --wp-cream-mute: #b8bcc4;
+    --wp-text-mute: #7c8693;
+    --wp-gold: #c89456;
+    --wp-gold-soft: #d4a468;
+    --wp-blue: #7ca1bc;
+    --wp-divider: rgba(255, 255, 255, 0.08);
+    --wp-divider-strong: rgba(255, 255, 255, 0.14);
+    --wp-serif: 'Cormorant Garamond', Georgia, serif;
+    --wp-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --wp-mono: 'JetBrains Mono', monospace;
+
+    background: var(--wp-bg);
+    color: var(--wp-cream-mute);
+    font-family: var(--wp-sans);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* HERO */
+  .work-page .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 110px 40px 40px;
+  }
+  .work-page .label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--wp-gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .work-page .hero-title {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--wp-cream);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+  }
+  .work-page .hero-sub {
+    color: var(--wp-text-mute);
+    font-size: 15px;
+    max-width: 580px;
+  }
+
+  /* SPINE */
+  .work-page .spine-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px 40px;
+    position: relative;
+  }
+  .work-page .spine {
+    position: relative;
+    padding: 40px 0;
+  }
+  .work-page .spine::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      var(--wp-divider-strong) 6%,
+      var(--wp-divider-strong) 94%,
+      transparent 100%);
+    transform: translateX(-50%);
+  }
+  .work-page .spine-progress {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--wp-gold), transparent);
+    transform: translateX(-50%);
+    height: 0;
+    transition: height 0.2s ease-out;
+    z-index: 1;
+  }
+  .work-page .spine-node {
+    position: relative;
+    margin-bottom: 80px;
+    min-height: 140px;
+  }
+  .work-page .spine-node:last-child { margin-bottom: 0; }
+  .work-page .spine-dot {
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    width: 14px;
+    height: 14px;
+    background: var(--wp-bg);
+    border: 2px solid var(--wp-gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    transition: all 0.3s;
+  }
+  .work-page .spine-node.open .spine-dot {
+    background: var(--wp-gold);
+    box-shadow: 0 0 0 6px rgba(200, 148, 86, 0.18);
+  }
+  .work-page .spine-node:has(.spine-card:hover) .spine-dot {
+    background: var(--wp-gold);
+  }
+  .work-page .spine-year {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    transform: translateX(-50%);
+    font-family: var(--wp-mono);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--wp-gold);
+    background: var(--wp-bg);
+    padding: 0 14px;
+    z-index: 3;
+  }
+  .work-page .spine-card {
+    width: calc(50% - 50px);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .work-page .spine-node.left .spine-card {
+    margin-left: 0;
+    text-align: right;
+    padding-right: 20px;
+  }
+  .work-page .spine-node.right .spine-card {
+    margin-left: calc(50% + 50px);
+    text-align: left;
+    padding-left: 20px;
+  }
+  .work-page .spine-card:hover { transform: translateY(-2px); }
+  .work-page .spine-num {
+    font-family: var(--wp-mono);
+    font-size: 11px;
+    color: var(--wp-gold);
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .work-page .spine-company {
+    font-family: var(--wp-serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--wp-cream);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  .work-page .spine-card:hover .spine-company { color: var(--wp-gold-soft); }
+  .work-page .spine-role {
+    color: var(--wp-cream-mute);
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .work-page .spine-meta {
+    font-family: var(--wp-mono);
+    font-size: 10px;
+    color: var(--wp-blue);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .work-page .spine-toggle {
+    margin-top: 14px;
+    font-family: var(--wp-mono);
+    font-size: 10px;
+    color: var(--wp-gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.55;
+    transition: opacity 0.3s;
+  }
+  .work-page .spine-card:hover .spine-toggle { opacity: 1; }
+
+  .work-page .spine-detail {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--wp-panel);
+    border-left: 2px solid var(--wp-gold);
+    border-radius: 2px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.4s ease, padding 0.4s ease;
+    padding: 0 36px;
+    margin-top: 0;
+  }
+  .work-page .spine-node.open .spine-detail {
+    max-height: 1500px;
+    opacity: 1;
+    padding: 32px 40px;
+    margin-top: 28px;
+  }
+  .work-page .spine-detail p {
+    margin-bottom: 14px;
+    color: var(--wp-cream-mute);
+    font-size: 15px;
+    line-height: 1.78;
+  }
+  .work-page .spine-detail p:last-child { margin-bottom: 0; }
+
+  /* THREAD */
+  .work-page .thread {
+    max-width: 760px;
+    margin: 0 auto 80px;
+    padding: 0 40px;
+  }
+  .work-page .thread-box {
+    background: var(--wp-panel);
+    padding: 50px 60px;
+    border-radius: 8px;
+  }
+  .work-page .thread-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--wp-gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .work-page .thread-box p {
+    color: var(--wp-cream-mute);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .work-page .thread-quote {
+    border-left: 3px solid var(--wp-blue);
+    padding-left: 24px;
+    margin: 24px 0;
+    font-family: var(--wp-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--wp-cream);
+    line-height: 1.35;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .work-page .hero,
+    .work-page .spine-wrap { padding-left: 24px; padding-right: 24px; }
+    .work-page .spine::before,
+    .work-page .spine-progress { left: 28px; }
+    .work-page .spine-dot { left: 28px; }
+    .work-page .spine-year { left: 28px; }
+    .work-page .spine-node.left .spine-card,
+    .work-page .spine-node.right .spine-card {
+      width: calc(100% - 60px);
+      margin-left: 60px;
+      text-align: left;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .work-page .thread-box { padding: 32px 28px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.work-page .spine-node').forEach(node => {
+    const card = node.querySelector('.spine-card');
+    const toggle = node.querySelector('.spine-toggle');
+    card?.addEventListener('click', () => {
+      const isOpen = node.classList.contains('open');
+      document.querySelectorAll('.work-page .spine-node').forEach(n => {
+        n.classList.remove('open');
+        const t = n.querySelector('.spine-toggle');
+        if (t) t.textContent = 'CLICK TO OPEN  +';
+      });
+      if (!isOpen) {
+        node.classList.add('open');
+        if (toggle) toggle.textContent = 'CLOSE  ×';
+      }
+    });
+  });
+
+  const spine = document.getElementById('spine');
+  const progressEl = document.getElementById('progress');
+  function updateProgress() {
+    if (!spine || !progressEl) return;
+    const rect = spine.getBoundingClientRect();
+    const viewportMid = window.innerHeight * 0.5;
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    const traveled = Math.max(0, Math.min(rect.height, viewportMid - rect.top));
+    (progressEl as HTMLElement).style.height = traveled + 'px';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+</script>
